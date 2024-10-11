@@ -4,27 +4,31 @@
     "description": "A MERN stack job board application",
     "main": "server/server.js",
     "scripts": {
-      "start": "node server/server.js",
-      "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-      "install": "cd server && npm i && cd ../client && npm i",
-      "seed": "cd server && npm run seed",
-      "build": "cd client && npm run build"
+        "start": "node server/server.js",
+        "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+        "install": "cd server && npm i && cd ../client && npm i",
+        "seed": "cd server && npm run seed",
+        "build": "cd client && npm run build"
     },
     "keywords": [
-      "mern",
-      "job board",
-      "react",
-      "node",
-      "mongodb",
-      "express",
-      "graphql"
+        "mern",
+        "job board",
+        "react",
+        "node",
+        "mongodb",
+        "express",
+        "graphql"
     ],
     "author": "Your Name",
     "license": "MIT",
     "devDependencies": {
-      "concurrently": "^7.0.0"
+        "concurrently": "^7.0.0"
     },
     "engines": {
-      "node": ">=14.0.0"
+        "node": ">=14.0.0"
+    },
+    "dependencies": {
+        "escape-string-regexp": "^5.0.0",
+        "joi": "^17.13.3"
     }
-  }
+}
