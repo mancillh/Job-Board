@@ -19,7 +19,7 @@
         "express",
         "graphql"
     ],
-    "author": "Your Name",
+    "author": "Kent Ball, Thomas Leavitt, Tracey Litschgi, Hannah Mancill, Joshua Nanninga",
     "license": "MIT",
     "devDependencies": {
         "concurrently": "^7.0.0"
