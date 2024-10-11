@@ -20,7 +20,7 @@
     "scripts": {
       "dev": "vite",
       "start": "react-scripts start",
-      "build": "react-scripts build", //"vite build"
+      "build": "react-scripts build", 
       "test": "react-scripts test",
       "eject": "react-scripts eject",
       "lint": "eslint .",
