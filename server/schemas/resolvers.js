@@ -1,71 +1,22 @@
 // server/schemas/resolvers.js
 
-// Importing necessary libraries and modules
-const jwt = require('jsonwebtoken');
-
-// Importing the User and Job models to interact with MongoDB collections
-const User = require('../models/User');
-const Job = require('../models/Job');
-
-// Importing error classes from Apollo Server to handle authentication and input errors
 const { AuthenticationError, UserInputError } = require('apollo-server-express');
-
-// Importing Joi for input validation to ensure data integrity
-const Joi = require('joi');
-
-// Importing escapeStringRegexp to sanitize user input and prevent Regular Expression Denial of Service (ReDoS) attacks
-const escapeStringRegexp = require('escape-string-regexp');
-
-// Importing a utility function to generate JWT tokens for authenticated users
-const generateToken = require('../utils/token');
-
-
-// Schema for user signup validation
-const signupSchema = Joi.object({
-  username: Joi.string().min(3).max(30).required(), // Username must be a string between 3 and 30 characters
-  email: Joi.string().email().required(), // Email must be a valid email address
-  password: Joi.string().min(6).required(), // Password must be at least 6 characters long
-});
-
-// Schema for user login validation
-const loginSchema = Joi.object({
-  email: Joi.string().email().required(), // Email must be a valid email address
-  password: Joi.string().required(), // Password is required
-});
-
-// Schema for adding a new job validation
-const addJobSchema = Joi.object({
-  title: Joi.string().min(3).max(100).required(), // Job title must be between 3 and 100 characters
-  company: Joi.string().min(2).max(100).required(), // Company name must be between 2 and 100 characters
-  location: Joi.string().max(100).allow('', null), // Location can be up to 100 characters or null/empty
-  description: Joi.string().allow('', null), // Description can be a string or null/empty
-});
+const { User, Job } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-
-    me: async (_, __, { user }) => {
-      // If no user is authenticated, throw an AuthenticationError
-      if (!user) throw new AuthenticationError('Not authenticated');
-
-      // Find the user by ID and exclude the password field from the result
-      const foundUser = await User.findById(user.id).select('-password');
-      if (!foundUser) throw new AuthenticationError('User not found');
-
-      // Return the found user
-      return foundUser;
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).select('-password');
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-
-    jobs: () => Job.find().sort({ createdAt: -1 }),
-
-    searchJobs: (_, { term }) => {
-      // Escape the search term to prevent ReDoS attacks
-      const escapedTerm = escapeStringRegexp(term);
-
-      // Create a case-insensitive regular expression from the escaped term
-      const regex = new RegExp(escapedTerm, 'i');
-
-      // Find jobs where the title, company, or location matches the regex
+    jobs: async () => {
+      return Job.find().sort({ createdAt: -1 });
+    },
+    searchJobs: async (parent, { term }) => {
+      const regex = new RegExp(term, 'i');
       return Job.find({
         $or: [
           { title: regex },
@@ -77,79 +28,36 @@ const resolvers = {
   },
 
   Mutation: {
-
-    signup: async (_, { username, email, password }) => {
-      // Validate input data against the signup schema
-      const { error } = signupSchema.validate({ username, email, password });
-      if (error) throw new UserInputError('Invalid input', { errors: error.details });
-
-      // Check if a user with the given email already exists
-      const existingUser = await User.findOne({ email });
-      if (existingUser) throw new UserInputError('User already exists');
-
-      // Create a new user with the provided details
-      const user = new User({ username, email, password });
-      await user.save();
-
-      // Generate a JWT token for the newly created user using the token utility
-      const token = generateToken(user._id);
-
-      // Prepare the user data to exclude the password
-      const userResponse = {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-      };
-
-      // Return the token and user data
-      return { token, user: userResponse };
+    signup: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
     },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
-    login: async (_, { email, password }) => {
-      // Validate input data against the login schema
-      const { error } = loginSchema.validate({ email, password });
-      if (error) throw new UserInputError('Invalid input', { errors: error.details });
+      if (!user) {
+        throw new AuthenticationError('No user found with this email address');
+      }
 
-      // Find the user by email and explicitly select the password field for verification
-      const user = await User.findOne({ email }).select('+password');
-      if (!user) throw new AuthenticationError('No user with that email');
+      const correctPw = await user.isCorrectPassword(password);
 
-      // Compare the provided password with the stored hashed password
-      const valid = await user.comparePassword(password);
-      if (!valid) throw new AuthenticationError('Incorrect password');
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
 
-      // Generate a JWT token for the authenticated user using the token utility
-      const token = generateToken(user._id);
+      const token = signToken(user);
 
-      // Prepare the user data to exclude the password
-      const userResponse = {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-      };
-
-      // Return the token and user data
-      return { token, user: userResponse };
+      return { token, user };
     },
-
-
-    addJob: async (_, { title, company, location, description }, { user }) => {
-      // If the user is not authenticated, throw an AuthenticationError
-      if (!user) throw new AuthenticationError('Not authenticated');
-
-      // Validate input data against the addJob schema
-      const { error } = addJobSchema.validate({ title, company, location, description });
-      if (error) throw new UserInputError('Invalid input', { errors: error.details });
-
-      // Create a new job with the provided details
-      const job = new Job({ title, company, location, description });
-      await job.save();
-
-      // Return the newly created job
-      return job;
+    addJob: async (parent, { title, company, location, description }, context) => {
+      if (context.user) {
+        const job = await Job.create({ title, company, location, description });
+        return job;
+      }
+      throw new AuthenticationError('You need to be logged in to add a job!');
     },
   },
 };
 
-// Export the resolvers to be used by Apollo Server
 module.exports = resolvers;
