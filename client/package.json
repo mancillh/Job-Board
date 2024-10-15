@@ -1,0 +1,57 @@
+{
+    "name": "job-board-client",
+    "version": "0.1.0",
+    "private": true,
+    "proxy": "http://localhost:3001",
+    "dependencies": {
+        "@apollo/client": "^3.7.14",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "graphql": "^16.6.0",
+        "jwt-decode": "^3.1.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.11.1",
+        "styled-components": "^6.1.13",
+        "web-vitals": "^2.1.4"
+    },
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "start": "vite start",
+        "build": "vite build",
+        "lint": "eslint .",
+        "preview": "vite preview"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.11.1",
+        "@types/react": "^18.3.10",
+        "@types/react-dom": "^18.3.0",
+        "@vitejs/plugin-react": "^4.3.2",
+        "eslint": "^9.11.1",
+        "eslint-plugin-react": "^7.37.0",
+        "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+        "eslint-plugin-react-refresh": "^0.4.12",
+        "globals": "^15.9.0",
+        "vite": "^5.4.8"
+    }
+}
