@@ -1,5 +1,5 @@
 import React from 'react';
-import PostItNote from './JobCard'; // Assuming you have a PostItNote component
+import JobCard from './JobCard'; // Assuming you have a PostItNote component
 
 function Corkboard() {
   // Sample job data, could be replaced with dynamic data fetched from an API or a database
