@@ -1,9 +1,7 @@
 // server/schemas/resolvers.js
-
 const { AuthenticationError, UserInputError } = require('apollo-server-express');
 const { User, Job } = require('../models');
 const { signToken } = require('../utils/auth');
-
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
@@ -26,7 +24,6 @@ const resolvers = {
       });
     },
   },
-
   Mutation: {
     signup: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -35,19 +32,14 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
       }
-
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-
       const token = signToken(user);
-
       return { token, user };
     },
     addJob: async (parent, { title, company, location, description }, context) => {
@@ -59,5 +51,4 @@ const resolvers = {
     },
   },
 };
-
 module.exports = resolvers;
