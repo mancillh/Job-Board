@@ -12,9 +12,20 @@ db.once("open", async () => {
 
   // >>>>>>>>>>> DOES NOT WORK
 
-  await Job.insertMany(jobData);
+  await User.create(userData);
 
-  await User.insertMany(userData);
+  for (let i = 0; i < jobData.length; i++) {
+    const { _id, jobName } = await Job.create(jobData[i]);
+    const user = await User.findOneAndUpdate(
+      { username: jobName },
+      {
+        $addToSet: {
+          thoughts: _id,
+        },
+      }
+      // this ^ needs to be changed
+    );
+  }
 
   // <<<<<<<<<<< DOES NOT WORK
 
