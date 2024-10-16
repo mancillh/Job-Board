@@ -1,4 +1,5 @@
-import React from 'react';
+import 'semantic-ui-css/semantic.min.css'
+import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Corkboard from './components/Corkboard'; // Assuming you have a Corkboard component
@@ -6,6 +7,7 @@ import Corkboard from './components/Corkboard'; // Assuming you have a Corkboard
 function App() {
   return (
     <>
+      <Navbar />
       <Header />
       
       {/* Main content section */}
