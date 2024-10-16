@@ -29,4 +29,15 @@ I'm not quite sure how to depend on default
 
 I haven't the faintest clue on how to give postedBy and savedJobs inside seed.js or the json files.
 
+FSF-PT-EAST-MAY-050624-A
+21-MERN
+01-Activities
+26-Stu_Resolver-Context
+Solved
+server
+seeders
+seed.js
+
+THIS is the file that is confusing me!
+
 */
