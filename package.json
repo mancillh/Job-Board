@@ -22,13 +22,16 @@
     "author": "Kent Ball, Thomas Leavitt, Tracey Litschgi, Hannah Mancill, Joshua Nanninga",
     "license": "MIT",
     "devDependencies": {
-        "concurrently": "^7.0.0"
+        "@vitejs/plugin-react": "^4.3.2",
+        "concurrently": "^7.0.0",
+        "vite": "^5.4.9"
     },
     "engines": {
         "node": ">=14.0.0"
     },
     "dependencies": {
         "escape-string-regexp": "^5.0.0",
-        "joi": "^17.13.3"
+        "joi": "^17.13.3",
+        "styled-components": "^6.1.13"
     }
 }
