@@ -1,36 +1,37 @@
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import App from './App.jsx'
-import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
+import App from './App.jsx';
+// import Signup from './pages/Signup';
+// import Login from './pages/Login';
 import Error from './pages/Error';
+import About from './pages/About';
+import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    error: <Error />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
+        path: '/',
         element: <Home />
-      }, {
-        path: '/login',
-        element: <Login />
-      }, {
-        path: '/signup',
-        element: <Signup />
-      }, {
-        path: '/me',
-        element: <Profile />
-      }, {
-        path: '/profiles/:username',
-        element: <Profile />
-      }, {
-        path: '/thoughts/:thoughtId',
-        element: <SingleThought />
+      }, 
+      // {
+      //   path: '/login',
+      //   element: <Login />
+      // }, {
+      //   path: '/signup',
+      //   element: <Signup />
+      // }, 
+      {
+        path: '/home',
+        element: <Home />
+      },{
+        path: '/about',
+        element: <About />
       }
     ]
   }
