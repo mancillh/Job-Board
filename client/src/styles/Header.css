@@ -8,6 +8,11 @@
     opacity:0.9;
 }
 
+.horizontal-line {
+    border-top: 10px solid black;
+    margin: 0;
+  }
+
 h1 {
     position: relative;
     font-family: 'Oooh Baby';
