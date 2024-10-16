@@ -8,7 +8,7 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import './App.css'; // Global styles
-
+ 
 function App() {
   return (
     <Router>
