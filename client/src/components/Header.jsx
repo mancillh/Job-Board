@@ -8,6 +8,7 @@ function Header() {
       <Image className='sticky-icon' src='/sticky note with push pin icon.png' size='small' />
       <h1>Neighborhood Jobs</h1>
     </div>
+    <div className="horizontal-line"></div>
   </>;
 }
 
