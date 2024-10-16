@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { MenuItem, Menu } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 const colors = [ 'black' ]
 
@@ -33,6 +34,11 @@ class ExampleMenu extends Component {
     )
   }
 }
+
+ExampleMenu.propTypes = {
+  color: PropTypes.string.isRequired,
+};
+
 const MenuExampleColoredInvertedMenus = () => {
     const menus = colors.map((color) => <ExampleMenu color={color} key={color} />)
   
