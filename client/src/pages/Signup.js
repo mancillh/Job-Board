@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from '../utils/quesries';
+import { ADD_PROFILE } from '../utils/queries'; // Ensure the path is correct
 
 import Auth from '../utils/auth';
+
+// Importing Semantic UI Components
+import { Button, Card, Container, Form, Message, Segment } from 'semantic-ui-react';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -12,19 +14,17 @@ const Signup = () => {
     email: '',
     password: '',
   });
-  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+  const [addProfile, { error, data, loading }] = useMutation(ADD_PROFILE);
 
-  // update state based on form input changes
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
+  // Update state based on form input changes
+  const handleChange = (event, { name, value }) => {
     setFormState({
       ...formState,
       [name]: value,
     });
   };
 
-  // submit form
+  // Submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -38,64 +38,80 @@ const Signup = () => {
     } catch (e) {
       console.error(e);
     }
+
+    // Optionally, clear form values upon successful signup
+    setFormState({
+      name: '',
+      email: '',
+      password: '',
+    });
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="name"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
+    <Container text>
+      <Segment vertical className="flex-row justify-center mb-4">
+        <Card fluid>
+          <Card.Content>
+            <Card.Header as="h2" textAlign="center" className="bg-dark text-light p-2">
+              Sign Up
+            </Card.Header>
+            <Card.Description>
+              {data ? (
+                <Message positive>
+                  <Message.Header>Success!</Message.Header>
+                  <p>
+                    You may now head <Link to="/">back to the homepage.</Link>
+                  </p>
+                </Message>
+              ) : (
+                <Form onSubmit={handleFormSubmit} loading={loading} noValidate>
+                  <Form.Input
+                    fluid
+                    label="Username"
+                    placeholder="Your username"
+                    name="name"
+                    type="text"
+                    value={formState.name}
+                    onChange={handleChange}
+                    required
+                  />
+                  <Form.Input
+                    fluid
+                    label="Email"
+                    placeholder="Your email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    required
+                  />
+                  <Form.Input
+                    fluid
+                    label="Password"
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                    required
+                  />
+                  <Button type="submit" primary fluid>
+                    Submit
+                  </Button>
+                </Form>
+              )}
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </main>
+              {error && (
+                <Message negative>
+                  <Message.Header>Error</Message.Header>
+                  <p>{error.message}</p>
+                </Message>
+              )}
+            </Card.Description>
+          </Card.Content>
+        </Card>
+      </Segment>
+    </Container>
   );
 };
 
