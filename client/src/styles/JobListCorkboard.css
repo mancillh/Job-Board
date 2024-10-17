@@ -1,0 +1,9 @@
+.corkboard {
+    display: flex;
+    background-image: url('/corkboard banner.jpg');
+    background-size: cover;
+    background-position:50% 50%;
+    position: 'absolute';
+    object-fit: 'cover';
+    opacity:0.9;
+}

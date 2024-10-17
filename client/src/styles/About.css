@@ -1,0 +1,14 @@
+h2 {
+    position: relative;
+    font-family: 'Oooh Baby', Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    font-size: 100px;
+    display: flex;
+    display: inline-block;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    font-size: 60px;
+}
