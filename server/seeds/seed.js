@@ -7,25 +7,22 @@ const userData = require("./userData.json");
 
 db.once("open", async () => {
   await cleanDB("Job", "jobs");
-
   await cleanDB("User", "users");
 
-  // >>>>>>>>>>> DOES NOT WORK
-
   await User.create(userData);
+  await Job.create(jobData);
 
-  for (let i = 0; i < jobData.length; i++) {
-    const { _id, jobName } = await Job.create(jobData[i]);
-    const user = await User.findOneAndUpdate(
-      { username: jobName },
-      {
-        $addToSet: {
-          thoughts: _id,
-        },
-      }
-      // this ^ needs to be changed
-    );
-  }
+  await User.insertMany(userData);
+  await Job.insertMany(jobData);
+
+// >>>>>>>>>>> DOES NOT WORK
+
+  // for (let i = 0; i < jobData.length; i++) {
+  //   const { _id, userName } = await Job.create(jobData[i]);
+  //   const user = await User.findOneAndUpdate(
+  //     { username: userName },
+  //   );
+  // }
 
   // <<<<<<<<<<< DOES NOT WORK
 
