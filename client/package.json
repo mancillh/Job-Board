@@ -10,16 +10,19 @@
         "@testing-library/user-event": "^13.5.0",
         "graphql": "^16.6.0",
         "jwt-decode": "^3.1.2",
+        "prop-types": "^15.8.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.11.1",
+        "semantic-ui-css": "^2.5.0",
+        "semantic-ui-react": "^2.1.5",
         "styled-components": "^6.1.13",
         "web-vitals": "^2.1.4"
     },
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "start": "vite start",
+        "start": "vite",
         "build": "vite build",
         "lint": "eslint .",
         "preview": "vite preview"
