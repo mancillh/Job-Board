@@ -1,0 +1,31 @@
+.header-container {
+    display: flex;
+    background-image: url('/corkboard banner.jpg');
+    background-size: cover;
+    background-position:50% 50%;
+    position: 'absolute';
+    object-fit: 'cover';
+    opacity:0.9;
+}
+
+.horizontal-line {
+    border-top: 10px solid black;
+    margin: 0;
+  }
+
+h1 {
+    position: relative;
+    font-family: 'Oooh Baby';
+    color: black;
+    font-size: 120px;
+    display: flex;
+    display: inline-block;
+    opacity: 1;
+}
+
+.sticky-icon {
+    position: relative;
+    display: flex;
+    display: inline-block;
+    margin-right: 3%;
+}
