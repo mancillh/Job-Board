@@ -41,14 +41,7 @@ const Login = () => {
       password: '',
     });
   };
-
-  // Optional: Email validation function
-  const validateEmail = (email) => {
-    // Simple regex for email validation
-    const re = /\S+@\S+\.\S+/;
-    return re.test(email);
-  };
-
+  
   return (
     <Container text>
       <Segment className="flex-row justify-center mb-4">
