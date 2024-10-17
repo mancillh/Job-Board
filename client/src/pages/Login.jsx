@@ -1,18 +1,17 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/queries';
-
 import Auth from '../utils/auth';
 
 // Importing Semantic UI Components
 import { Button, Card, Container, Form, Message, Segment } from 'semantic-ui-react';
 
-const Login = (props) => {
+const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error, data, loading }] = useMutation(LOGIN_USER);
 
-  // update state based on form input changes
+  // Update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -22,7 +21,7 @@ const Login = (props) => {
     });
   };
 
-  // submit form
+  // Submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -36,11 +35,18 @@ const Login = (props) => {
       console.error(e);
     }
 
-    // clear form values
+    // Clear form values
     setFormState({
       email: '',
       password: '',
     });
+  };
+
+  // Optional: Email validation function
+  const validateEmail = (email) => {
+    // Simple regex for email validation
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
   };
 
   return (
@@ -52,6 +58,8 @@ const Login = (props) => {
               Login
             </Card.Header>
             <Card.Description>
+              {loading && <Message info>Loading...</Message>}
+              
               {data ? (
                 <Message positive>
                   <Message.Header>Success!</Message.Header>
@@ -59,36 +67,46 @@ const Login = (props) => {
                     You may now head <Link to="/">back to the homepage</Link>.
                   </p>
                 </Message>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-               <Container text>
-      <Segment className="flex-row justify-center mb-4">
-        <Card fluid>
-          <Card.Content>
-            <Card.Header className="bg-dark text-light p-2" textAlign="center">
-              Login
-            </Card.Header>
-            <Card.Description>
-              {data ? (
-                <Message positive>
-                  <Message.Header>Success!</Message.Header>
-                  <p>
-                    You may now head <Link to="/">back to the homepage</Link>.
-                  </p>
+              ) : (
+                <Form onSubmit={handleFormSubmit}>
+                  <Form.Input
+                    label="Email"
+                    name="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    required
+                    aria-label="Email Address"
+                  />
+                  <Form.Input
+                    label="Password"
+                    name="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    value={formState.password}
+                    onChange={handleChange}
+                    required
+                    aria-label="Password"
+                  />
+                  <Button type="submit" primary disabled={loading}>
+                    {loading ? 'Logging in...' : 'Login'}
+                  </Button>
+                </Form>
+              )}
+
+              {error && (
+                <Message negative className="my-3 p-3">
+                  <Message.Header>Error</Message.Header>
+                  <p>{error.message}</p>
                 </Message>
-
-{error && (
-  <Message negative className="my-3 p-3">
-    <Message.Header>Error</Message.Header>
-    <p>{error.message}</p>
-  </Message>
-)}
-</Card.Description>
-</Card.Content>
-</Card>
-</Segment>
-</Container>
-);
-
+              )}
+            </Card.Description>
+          </Card.Content>
+        </Card>
+      </Segment>
+    </Container>
+  );
+};
 
 export default Login;
