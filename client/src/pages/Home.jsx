@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import { Image } from 'semantic-ui-react'
-// import '../styles/JobListCorkboard.css';
-=======
 import React from 'react';
 import { Image } from 'semantic-ui-react';
 import JobCard from '../components/JobCard';
 import '../styles/JobListCorkboard.css';
->>>>>>> acf2eff441a4ce6466e0a86cbc77a29b2610129d
 
 // Sample job data
 const sampleJobs = [

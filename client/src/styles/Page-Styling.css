@@ -1,0 +1,28 @@
+.cork-container {
+    display: flex;
+    background-image: url('/corkboard banner.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    object-fit: cover;
+    opacity: 0.9;
+    min-height: 100vh; /* Ensure the corkboard covers the full height of the viewport */
+    padding: 2rem;
+    justify-content: center;
+  }
+
+h2 {
+    display: flex;
+    justify-content: center;
+    font-family: 'Oooh Baby', Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    font-size: 60px;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    font-size: 30px;
+}
