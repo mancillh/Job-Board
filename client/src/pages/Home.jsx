@@ -1,5 +1,5 @@
 import { Image } from 'semantic-ui-react'
-import '../styles/JobListCorkboard.css';
+// import '../styles/JobListCorkboard.css';
 
 function Corkboard() {
 
