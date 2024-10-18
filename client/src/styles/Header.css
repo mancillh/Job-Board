@@ -2,30 +2,52 @@
     display: flex;
     background-image: url('/corkboard banner.jpg');
     background-size: cover;
-    background-position:50% 50%;
-    position: 'absolute';
-    object-fit: 'cover';
-    opacity:0.9;
-}
-
-.horizontal-line {
+    background-position: 50% 50%;
+    position: relative;
+    object-fit: cover;
+    opacity: 0.9;
+    padding: 20px;
+    align-items: center;
+  }
+  
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .horizontal-line {
     border-top: 10px solid black;
     margin: 0;
   }
-
-h1 {
-    position: relative;
-    font-family: 'Oooh Baby';
+  
+  h1 {
+    font-family: 'Oooh Baby', cursive;
     color: black;
     font-size: 120px;
-    display: flex;
-    display: inline-block;
-    opacity: 1;
-}
-
-.sticky-icon {
-    position: relative;
-    display: flex;
-    display: inline-block;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .sticky-icon {
     margin-right: 3%;
-}
+    align-self: flex-start;
+  }
+  
+  .search-container {
+    width: 80%;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+  
+  .job-search-bar input {
+    border: 3px solid #000 !important;
+    border-radius: 10px !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 1.2em !important;
+  }
+  
+  .job-search-bar i.icon {
+    font-size: 1.5em !important;
+  }
