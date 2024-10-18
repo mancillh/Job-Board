@@ -1,0 +1,94 @@
+.job-card {
+  width: 220px;
+  height: 220px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  padding: 30px 20px 20px;
+  margin: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.job-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  background-image: url('/red-pushpin-png-7.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+.job-card.expanded {
+  width: 300px;
+  height: auto;
+  min-height: 400px;
+  background-size: cover;
+}
+
+.job-card-content {
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  background-color: #009933;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.job-card h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: #ffffff; /* Changed to white for better contrast */
+}
+
+.job-card p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #e6e6e6; /* Light gray for better visibility */
+}
+
+.job-details {
+  margin-top: 15px;
+}
+
+.job-details h4 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #ffffff; /* Changed to white for better contrast */
+}
+
+.job-details ul {
+  padding-left: 20px;
+  margin: 5px 0;
+  color: #e6e6e6; /* Light gray for better visibility */
+}
+
+.job-details .ui.button {
+  margin-top: 15px;
+}
+
+/* Customize scrollbar for webkit browsers */
+.job-card-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.job-card-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+/* Additional hover effect */
+.job-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}

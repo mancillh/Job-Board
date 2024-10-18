@@ -23,14 +23,16 @@ const jobSchema = new mongoose.Schema({
   requirements: {
     type: [String],
     default: [],
+    required: true
   },
   salary: {
     type: String,
     trim: true,
+    required: true
   },
   jobType: {
     type: String,
-    enum: ['Full-time', 'Part-time', 'Contract', 'Internship'],
+    enum: ['Hybrid', 'Remote', 'In-Person'],
     required: true,
   },
   postedDate: {
@@ -40,7 +42,7 @@ const jobSchema = new mongoose.Schema({
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    required: false, // should be true
   },
 }, {
   timestamps: true,
