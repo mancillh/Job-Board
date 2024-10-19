@@ -40,7 +40,7 @@ const Signup = () => {
         {success ? (
           <Message positive className="auth-message">
             <Message.Header>Success!</Message.Header>
-            <p>You may now head <Link to="/">back to the homepage.</Link></p>
+            <p>You may now head&nbsp;<Link to="/">back to the homepage.</Link></p>
           </Message>
         ) : (
           <Form onSubmit={handleFormSubmit} className="auth-form" style={{ marginTop: 0 }}>
