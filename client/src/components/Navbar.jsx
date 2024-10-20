@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { MenuItem, Menu } from 'semantic-ui-react'
+import { MenuItem, Menu, } from 'semantic-ui-react'
 import PropTypes from 'prop-types';
 
 const colors = ['black']
@@ -45,6 +45,7 @@ class ExampleMenu extends Component {
           active={activeItem === 'Signup'}
           onClick={this.handleItemClick}
         />
+        
       </Menu>
     )
   }
