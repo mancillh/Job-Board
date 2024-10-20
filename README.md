@@ -101,7 +101,3 @@ Contributions are welcome! Please follow these steps to contribute:
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 """
-
-# Write the updated content to the README file
-with open(new_readme_path, 'w') as file:
-    file.write(new_readme_content)
