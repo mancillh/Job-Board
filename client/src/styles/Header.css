@@ -8,6 +8,12 @@
     opacity:0.9;
 }
 
+.search-box {
+    width: 200px;
+    right: 0;
+    position: absolute;
+  }
+
 .horizontal-line {
     border-top: 10px solid black;
     margin: 0;

@@ -19,7 +19,7 @@ function Header() {
       <div className='search-box'>
           <Input
             icon='search'
-            placeholder='Search...'
+            placeholder='Search for jobs...'
             value={searchQuery}
             onChange={handleSearchChange}
           />
