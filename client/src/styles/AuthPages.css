@@ -1,0 +1,48 @@
+.auth-page {
+  background-image: url('/corkboard banner.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 5rem;
+}
+
+.auth-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.auth-header {
+  font-family: 'Oooh Baby', cursive;
+  color: #333;
+  margin-bottom: 1rem !important; /* Reduce bottom margin */
+  font-size: 2.5rem !important; /* Adjust font size if needed */
+}
+
+.auth-form .field {
+  margin-bottom: 1rem !important; /* Ensure consistent spacing between fields */
+}
+
+.auth-form .button {
+  margin-top: 1rem !important; /* Add some space above the button */
+}
+
+.auth-message {
+  margin-top: 1rem;
+}
+
+/* Remove any default margins from Semantic UI that might be causing extra space */
+.ui.container {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.ui.form {
+  margin-top: 0 !important;
+}
