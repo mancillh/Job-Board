@@ -8,10 +8,23 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-//this is where we filter the specific job listings or updating the component that displays jobs
+  const [jobs, setJobs] = useState([]);
+// Fetch jobs from the server whenever searchQuery changes
+useEffect(() => {
+  const fetchJobs = async () => {
+    try {
+      const response = await fetch(`/api/jobs?query=${searchQuery}`);
+      const data = await response.json();
+      setJobs(data);  // Updates the jobs state with data from server
+    } catch (error) {
+      console.error('Error fetching jobs:', error);
+    }
   };
+
+  if (searchQuery) {
+    fetchJobs();
+  }
+}, [searchQuery]);
 
   return (
     <>
