@@ -2,6 +2,7 @@
 const { AuthenticationError, UserInputError } = require('apollo-server-express');
 const { User, Job } = require('../models');
 const { signToken } = require('../utils/auth');
+
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
