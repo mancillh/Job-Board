@@ -14,7 +14,7 @@ function App() {
 useEffect(() => {
   const fetchJobs = async () => {
     try {
-      const response = await fetch('/graphql', {
+      const response = await fetch('http://localhost:3001/graphql', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -38,7 +38,11 @@ useEffect(() => {
         });
 
         const result = await response.json();
+        if (result.data) {
         setJobs(result.data.searchJobs);  // Update jobs state with result from GraphQL query
+      } else {
+        console.error('Error fetching jobs:', result.errors);
+      }
       } catch (error) {
         console.error('Error fetching jobs:', error);
       }
