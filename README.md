@@ -32,27 +32,27 @@ A job board web application where users can browse and apply for remote jobs. Th
 To set up this project locally, follow these steps:
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/Job-Board.git
-    ```
+   ```bash
+   git clone https://github.com/yourusername/Job-Board.git
+   ```
 
 2. Navigate to the project directory:
-    ```bash
-    cd Job-Board
-    ```
+   ```bash
+   cd Job-Board
+   ```
 
 3. Install the necessary dependencies for both client and server:
-    ```bash
-    npm install
-    cd client && npm install
-    ```
+   ```bash
+   npm install
+   cd client && npm install
+   ```
 
 4. Set up the environment variables by renaming `.env.EXAMPLE` to `.env` and filling in the required values.
 
 5. Start the development server:
-    ```bash
-    npm run dev
-    ```
+   ```bash
+   npm run dev
+   ```
 
 ## Dependencies
 
@@ -75,6 +75,7 @@ Below are the key dependencies used in this project for both the backend and fro
 - **Axios**: Promise-based HTTP client for making requests to the backend.
 - **React Router**: Declarative routing for React apps, enabling navigation within the app.
 - **classnames**: Utility for conditionally joining class names for easier styling.
+- **coors**: (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources.
 
 These dependencies are essential for setting up and running the Job Board application.
 """
