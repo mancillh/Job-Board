@@ -5,8 +5,8 @@ function Contact() {
     <div className='cork-container'>
       <div className='content-wrapper'>
         <h2>Contact Us</h2>
-        <p>Phone: 123.456.7890</p>
-        <p>Email: contact@neighborhoodjobs.com</p>
+        <p>Phone: 123-456-7890</p>
+        <p>Email: ooobaby@neighborhoodjobs.com</p>
       </div>
     </div>
   );
