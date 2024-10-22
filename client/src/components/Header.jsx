@@ -3,6 +3,15 @@ import { Image, Input } from 'semantic-ui-react';
 import '../styles/Header.css';
 
 function Header() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (e) => {
+    const { value } = e.target;
+    setSearchQuery(value);
+
+    // Call the onSearch function passed as a prop to filter jobs
+    onSearch(value);
+  };
   return (
     <>
       <div className='header-container'>
