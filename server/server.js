@@ -1,8 +1,9 @@
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config({ path: './.env' });
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
+const cors = require('cors');
 
 
 const { typeDefs, resolvers } = require('./schemas');
@@ -11,6 +12,7 @@ const { authMiddleware } = require('./utils/auth');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+app.use(cors());
 const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -29,7 +31,7 @@ const startApolloServer = async () => {
         app.use(express.static(path.join(__dirname, '../client/dist')));
 
         app.get('*', (req, res) => {
-            res.sendFile(path.join(__dirname, '.../client/dist/public/index.html'));
+            res.sendFile(path.join(__dirname, '../client/dist/index.html'));
         });
     }
 
