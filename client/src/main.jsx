@@ -1,5 +1,8 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { ApolloLink } from '@apollo/client';
 
 import App from './App.jsx';
 import Signup from './pages/Signup';
@@ -9,6 +12,34 @@ import About from './pages/About';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 
+const loggerLink = new ApolloLink((operation, forward) => {
+  console.log(`GraphQL Request: ${operation.operationName}`);
+  return forward(operation).map((result) => {
+    console.log(`GraphQL Result: ${operation.operationName}`, result);
+    return result;
+  });
+});
+
+// Set up Apollo Client
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql', // Explicitly specify the full URL
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    }
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+});
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -17,23 +48,26 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: '/',
         element: <Home />
-      }, 
-      // {
-      //   path: '/login',
-      //   element: <Login />
-      // }, {
-      //   path: '/signup',
-      //   element: <Signup />
-      // }, 
+
+      },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/signup',
+        element: <Signup />
+      },
       {
         path: '/home',
         element: <Home />
-      },{
+      },
+      {
         path: '/about',
         element: <About />
-      },{
+      },
+      {
         path: '/contact',
         element: <Contact />
       }
@@ -42,5 +76,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <ApolloProvider client={client}>
+    <RouterProvider router={router} />
+  </ApolloProvider>
 )

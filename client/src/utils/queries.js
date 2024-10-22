@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // utils/queries.js
 
 import { gql } from '@apollo/client';
@@ -34,11 +35,19 @@ export const LOGIN_USER = gql`
 export const UPDATE_PROFILE = gql`
   mutation updateProfile($id: ID!, $username: String, $email: String, $password: String) {
     updateProfile(id: $id, username: $username, email: $email, password: $password) {
+=======
+import { gql } from '@apollo/client';
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+>>>>>>> 64b398fcf270ff80781255435320c71eb3edb0db
       _id
       username
       email
     }
   }
+<<<<<<< HEAD
 `;
 
 // Mutation for deleting a user profile
@@ -192,3 +201,6 @@ export const GET_USER = gql`
     }
   }
 `;
+=======
+`;
+>>>>>>> 64b398fcf270ff80781255435320c71eb3edb0db

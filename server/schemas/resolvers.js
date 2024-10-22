@@ -26,6 +26,7 @@ const resolvers = {
   },
   Mutation: {
     signup: async (parent, { username, email, password }) => {
+      console.log('Signup mutation called with:', username, email);  // Debugging line
       const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };

@@ -1,17 +1,23 @@
-import { Component } from 'react'
-import { MenuItem, Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { MenuItem, Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import Auth from '../utils/auth';
 
-const colors = ['black']
+const colors = ['black'];
 
 class ExampleMenu extends Component {
-  state = { activeItem: 'home' }
+  state = { activeItem: 'home' };
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  handleLogout = () => {
+    Auth.logout();
+    this.setState({ activeItem: 'home' });
+  };
 
   render() {
-    const { color } = this.props
-    const { activeItem } = this.state
+    const { color } = this.props;
+    const { activeItem } = this.state;
 
     return (
       <Menu color={color} inverted widths={5}>
@@ -33,20 +39,30 @@ class ExampleMenu extends Component {
           active={activeItem === 'Contact Us'}
           onClick={this.handleItemClick}
         />
-        <MenuItem
-          href='./login'
-          name='Login'
-          active={activeItem === 'Login'}
-          onClick={this.handleItemClick}
-        />
-        <MenuItem
-          href='./signup'
-          name='Signup'
-          active={activeItem === 'Signup'}
-          onClick={this.handleItemClick}
-        />
+        {Auth.loggedIn() ? (
+          <MenuItem
+            name='Logout'
+            active={activeItem === 'Logout'}
+            onClick={this.handleLogout}
+          />
+        ) : (
+          <>
+            <MenuItem
+              href='./login'
+              name='Login'
+              active={activeItem === 'Login'}
+              onClick={this.handleItemClick}
+            />
+            <MenuItem
+              href='./signup'
+              name='Signup'
+              active={activeItem === 'Signup'}
+              onClick={this.handleItemClick}
+            />
+          </>
+        )}
       </Menu>
-    )
+    );
   }
 }
 
@@ -55,9 +71,9 @@ ExampleMenu.propTypes = {
 };
 
 const MenuExampleColoredInvertedMenus = () => {
-  const menus = colors.map((color) => <ExampleMenu color={color} key={color} />)
+  const menus = colors.map((color) => <ExampleMenu color={color} key={color} />);
 
-  return <div>{menus}</div>
-}
+  return <div>{menus}</div>;
+};
 
-export default MenuExampleColoredInvertedMenus
+export default MenuExampleColoredInvertedMenus;

@@ -6,7 +6,7 @@ const typeDefs = gql`
 
 
   type User {
-    id: ID!             # Unique identifier for the user
+    _id: ID!             # Unique identifier for the user
     username: String!   # Username chosen by the user
     email: String!      # User's email address
   }
