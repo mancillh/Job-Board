@@ -13,12 +13,11 @@ const typeDefs = gql`
 
 
   type Job {
-    id: ID!              # Unique identifier for the job
+    _id: ID!              # Unique identifier for the job
     title: String!      # Title of the job position
     company: String!    # Company offering the job
-    location: String     # Location of the job (optional)
-    description: String  # Detailed description of the job (optional)
-    createdAt: String    # Timestamp when the job was created
+    location: String!     # Location of the job
+    description: String ! # Detailed description of the job
   }
 
   type AuthPayload {

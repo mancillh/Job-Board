@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { ApolloLink } from '@apollo/client';
 
 import App from './App.jsx';
 import Signup from './pages/Signup';
@@ -11,14 +10,6 @@ import Error from './pages/Error';
 import About from './pages/About';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
-
-const loggerLink = new ApolloLink((operation, forward) => {
-  console.log(`GraphQL Request: ${operation.operationName}`);
-  return forward(operation).map((result) => {
-    console.log(`GraphQL Result: ${operation.operationName}`, result);
-    return result;
-  });
-});
 
 // Set up Apollo Client
 const httpLink = createHttpLink({

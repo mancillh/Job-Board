@@ -42,4 +42,32 @@ const JobCard = ({ job }) => {
   );
 };
 
+// Define prop types
+JobCard.propTypes = {
+  job: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    company: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    salary: PropTypes.string,
+    jobType: PropTypes.oneOf(['In-Person', 'Hybrid', 'Remote',]),
+    requirements: PropTypes.arrayOf(PropTypes.string),
+    postedDate: PropTypes.string,
+    postedBy: PropTypes.shape({
+      _id: PropTypes.string,
+      username: PropTypes.string
+    })
+  }).isRequired
+};
+
+// Define default props (optional)
+JobCard.defaultProps = {
+  job: {
+    salary: 'Not specified',
+    requirements: [],
+    jobType: 'Full-time',
+  }
+};
+
 export default JobCard;

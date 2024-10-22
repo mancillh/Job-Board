@@ -9,3 +9,15 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_JOBS = gql`
+  query allJobs {
+    jobs {
+      _id
+      title
+      company
+      location
+      description
+    }
+  }
+`;
