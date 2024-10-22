@@ -47,7 +47,7 @@ function Home() {
 
   const jobList = data?.jobs || [];
 
-  console.log(jobList);
+  
 
   return (
     <div className="home-container">
@@ -73,6 +73,7 @@ function Home() {
       ) : (
         <div className="job-cards-overlay">
           {jobList.map((job) => (
+            console.log(job),
             <JobCard key={job._id} job={job.title} />
           ))}
           
