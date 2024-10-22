@@ -1,5 +1,5 @@
 import 'semantic-ui-css/semantic.min.css'
-import { Outlet } from 'react-router-dom';
+// import { Outlet } from 'react-router-dom'; commented out to render child routes
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [jobs, setJobs] = useState([]);
+
 // Fetch jobs from the server whenever searchQuery changes
 useEffect(() => {
   const fetchJobs = async () => {

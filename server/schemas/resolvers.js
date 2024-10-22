@@ -15,6 +15,10 @@ const resolvers = {
       return Job.find().sort({ createdAt: -1 });
     },
     searchJobs: async (parent, { term }) => {
+      if (!term) {
+        return Job.find().sort({ createdAt: -1 });  // Return all jobs if no search term
+      }
+      
       const regex = new RegExp(term, 'i');
       return Job.find({
         $or: [

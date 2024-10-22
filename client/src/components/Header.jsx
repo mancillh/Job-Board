@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Image, Input } from 'semantic-ui-react';
 import '../styles/Header.css';
 
-function Header() {
+function Header({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchChange = (e) => {
