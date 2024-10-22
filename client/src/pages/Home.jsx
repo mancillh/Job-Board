@@ -68,7 +68,7 @@ function Home() {
           size="xlarge"
         />
       </div>
-      {loading ? (
+      {/* {loading ? (
         <div>loading...</div>
       ) : (
         <div className="job-cards-overlay">
@@ -78,7 +78,12 @@ function Home() {
           ))}
           
         </div>
-      )}
+      )} */}
+      <div className="job-cards-overlay">
+        {jobList.map(job => (
+          <JobCard key={job.id} job={job} />
+        ))}
+      </div>
     </div>
   );
 }
