@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Button, Icon } from 'semantic-ui-react';
 import '../styles/JobCard.css';
+import PropTypes from 'prop-types';
 
 const JobCard = ({ job }) => {
   const [expanded, setExpanded] = useState(false);
