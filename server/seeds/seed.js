@@ -12,9 +12,6 @@ db.once("open", async () => {
   await User.create(userData);
   await Job.create(jobData);
 
-  await User.insertMany(userData);
-  await Job.insertMany(jobData);
-
 // >>>>>>>>>>> DOES NOT WORK
 
   // for (let i = 0; i < jobData.length; i++) {

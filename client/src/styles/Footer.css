@@ -1,0 +1,41 @@
+.footer {
+    background-image: url('/corkboard banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paper-behind-footer {
+    background-image: url('/wrinkled paper.jpg');
+    background-size: cover;
+    height: 105px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+}
+
+h5 {
+   font-family: 'Oooh Baby', cursive;
+   font-size: 40px;
+   text-align: center;
+   margin: 10px;
+}
+
+.paper-behind-footer::before {
+    content: '';
+    position: absolute;
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background-image: url('/red-pushpin-png-7.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
