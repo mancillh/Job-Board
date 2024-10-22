@@ -29,7 +29,7 @@ useEffect(() => {
   return (
     <>
       <Navbar />
-      <Header onSearch={handleSearch} />
+      <Header onSearch={setSearchQuery} />
       <main>
 {/*the searchQuery to the component renders jobs listings */}
 
