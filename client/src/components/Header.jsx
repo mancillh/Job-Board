@@ -1,4 +1,4 @@
-import React from 'react';
+import React { useState } from 'react';
 import { Image, Input } from 'semantic-ui-react';
 import '../styles/Header.css';
 
