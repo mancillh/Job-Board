@@ -1,14 +1,15 @@
 import '../styles/Page-Styling.css';
 
-function About() {
+function Contact() {
   return (
     <div className='cork-container'>
       <div className='content-wrapper'>
-        <h2>About Us</h2>
-        <p>This is some text about us!</p>
+        <h2>Contact Us</h2>
+        <p>Phone: 123.456.7890</p>
+        <p>Email: contact@neighborhoodjobs.com</p>
       </div>
     </div>
   );
 }
 
-export default About;
+export default Contact;
