@@ -26,6 +26,8 @@ function Header() {
               placeholder='Search for jobs, skills, or companies...'
               size='huge'
               className='job-search-bar'
+              value={searchQuery}
+              onChange={handleSearchChange}
             />
           </div>
         </div>
