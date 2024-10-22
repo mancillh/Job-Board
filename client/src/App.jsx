@@ -14,18 +14,38 @@ function App() {
 useEffect(() => {
   const fetchJobs = async () => {
     try {
-      const response = await fetch(`/api/jobs?query=${searchQuery}`);
-      const data = await response.json();
-      setJobs(data);  // Updates the jobs state with data from server
-    } catch (error) {
-      console.error('Error fetching jobs:', error);
-    }
-  };
+      const response = await fetch('/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            query: `
+              query Jobs($term: String) {
+                searchJobs(term: $term) {
+                  _id
+                  title
+                  company
+                  location
+                  description
+                }
+              }
+            `,
+            variables: {
+              term: searchQuery || '',  // Empty string to fetch all jobs if no search term
+            },
+          }),
+        });
 
-  if (searchQuery) {
+        const result = await response.json();
+        setJobs(result.data.searchJobs);  // Update jobs state with result from GraphQL query
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+      }
+    };
+
     fetchJobs();
-  }
-}, [searchQuery]);
+  }, [searchQuery]);
 
   return (
     <>
