@@ -31,10 +31,20 @@ useEffect(() => {
       <Navbar />
       <Header onSearch={setSearchQuery} />
       <main>
-{/*the searchQuery to the component renders jobs listings */}
-
-          <JobListings searchQuery={searchQuery} />
-        <Outlet />
+      <div>
+          {jobs.length > 0 ? (
+            jobs.map((job) => (
+              <div key={job._id}>
+                <h3>{job.title}</h3>
+                <p>{job.company}</p>
+                <p>{job.location}</p>
+                <p>{job.description}</p>
+              </div>
+              ))
+            ) : (
+              <p>No jobs found</p>
+            )}
+          </div>
       </main>
       <Footer />
     </>
