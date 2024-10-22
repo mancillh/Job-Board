@@ -1,4 +1,3 @@
-import React from 'react';
 import { Image } from 'semantic-ui-react';
 import JobCard from '../components/JobCard';
 import '../styles/JobListCorkboard.css';
