@@ -6,7 +6,7 @@ function Header({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchChange = (e) => {
-    const { value } = e.target;
+    const value = e.target.value;
     setSearchQuery(value);
 
     // Call the onSearch function passed as a prop to filter jobs

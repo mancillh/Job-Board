@@ -3,6 +3,7 @@ import 'semantic-ui-css/semantic.min.css'
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import JobCard from './components/JobCard';
 import { useState, useEffect } from 'react';
 // import { query } from 'express';
 
@@ -21,7 +22,7 @@ useEffect(() => {
           },
           body: JSON.stringify({
             query: `
-              query Jobs($term: String) {
+              query SearchJobs($term: String) {
                 searchJobs(term: $term) {
                   _id
                   title
@@ -32,17 +33,15 @@ useEffect(() => {
               }
             `,
             variables: {
-              term: searchQuery || '',  // Empty string to fetch all jobs if no search term
+              term: searchQuery,
             },
           }),
         });
 
         const result = await response.json();
-        if (result.data) {
-        setJobs(result.data.searchJobs);  // Update jobs state with result from GraphQL query
-      } else {
-        console.error('Error fetching jobs:', result.errors);
-      }
+        console.log(result)
+        
+        setJobs(result.data.searchJobs);
       } catch (error) {
         console.error('Error fetching jobs:', error);
       }
@@ -59,12 +58,7 @@ useEffect(() => {
       <div>
           {jobs.length > 0 ? (
             jobs.map((job) => (
-              <div key={job._id}>
-                <h3>{job.title}</h3>
-                <p>{job.company}</p>
-                <p>{job.location}</p>
-                <p>{job.description}</p>
-              </div>
+              <JobCard key={job.id} job={job} />
               ))
             ) : (
               <p>No jobs found</p>
