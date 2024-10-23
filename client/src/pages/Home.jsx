@@ -31,17 +31,6 @@ function Home() {
           size="xlarge"
         />
       </div>
-      {/* {loading ? (
-        <div>loading...</div>
-      ) : (
-        <div className="job-cards-overlay">
-          {jobList.map((job) => (
-            console.log(job),
-            <JobCard key={job._id} job={job.title} />
-          ))}
-          
-        </div>
-      )} */}
       <div className="job-cards-overlay">
         {jobList.map(job => (
           <JobCard key={job.id} job={job} />
