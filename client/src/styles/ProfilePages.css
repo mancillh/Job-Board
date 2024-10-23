@@ -14,7 +14,7 @@
   border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 600px !important; /* Increased width for better job display */
+  max-width: 800px !important; /* Increased for better job card display */
   width: 100%;
 }
 
@@ -25,27 +25,155 @@
   font-size: 2.5rem !important;
 }
 
-/* Added styles for job cards */
-.ui.card {
-  width: 100% !important;
-  margin: 1rem 0 !important;
+/* Saved Jobs Section Styles */
+.saved-jobs-container {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem 0;
 }
 
+/* Job Card Styles */
+.job-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  position: relative;
+}
+
+.job-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.job-card h3 {
+  font-family: 'Oooh Baby', cursive;
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.job-card p {
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+/* Loading State Styles */
+.loading-message {
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Oooh Baby', cursive;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+/* Empty State Message */
+.no-jobs-message {
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Oooh Baby', cursive;
+  font-size: 1.8rem;
+  color: #666;
+}
+
+/* Segment Styles */
 .ui.segment {
   margin: 1rem 0 !important;
+  border: none !important;
+  background-color: #fff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Style for the username section */
 .ui.segment:first-of-type {
-  background-color: #f8f9fa;
+  background-color: #f8f9fa !important;
 }
 
 .ui.segment .icon {
   margin-bottom: 0.5rem;
+  color: #333;
 }
 
-/* Remove any default margins from Semantic UI that might be causing extra space */
+/* Header Styles in Segments */
+.ui.segment h4 {
+  font-family: 'Oooh Baby', cursive !important;
+  font-size: 2rem !important;
+  color: #333 !important;
+  text-align: center;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Job Details Styles */
+.job-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.job-details h4 {
+  font-family: 'Oooh Baby', cursive;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Grid Styles for Job Cards */
+.ui.grid {
+  margin-top: 1rem !important;
+}
+
+.ui.grid > .column {
+  padding: 1rem !important;
+}
+
+/* Container Styles */
 .ui.container {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .profile-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .job-card {
+    padding: 1rem;
+  }
+
+  .job-card h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animation for Job Cards */
+.job-card {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Icon Styles in Job Cards */
+.job-card .icon {
+  color: #333;
+  margin-right: 0.5rem;
+}
+
+/* Button Styles in Job Cards */
+.job-card .ui.button {
+  margin-top: 1rem;
+  width: 100%;
+  font-family: 'Oooh Baby', cursive;
+  font-size: 1.2rem;
 }

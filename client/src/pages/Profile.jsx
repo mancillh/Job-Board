@@ -1,21 +1,33 @@
 import React from 'react';
-import { Container, Header, Segment, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { Container, Header, Segment, Icon, Grid } from 'semantic-ui-react';
 import { Navigate } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_SAVED_JOBS } from '../utils/queries';
+import JobCard from '../components/JobCard';
 import Auth from '../utils/auth';
 import '../styles/ProfilePages.css';
+
 const Profile = () => {
   // Check if user is logged in
   if (!Auth.loggedIn()) {
     return <Navigate to="/login" />;
   }
+
   // Get user data from token
   const userProfile = Auth.getProfile() || {};
+
+  // Query for saved jobs
+  const { loading, data } = useQuery(GET_SAVED_JOBS);
+  const savedJobs = data?.me?.savedJobs || [];
+
   return (
     <div className="profile-page">
       <Container className="profile-container">
         <Header as='h2' textAlign='center' className="profile-header">
           Profile
         </Header>
+
         {/* Username Display */}
         <Segment textAlign='center'>
           <Icon name='user circle' size='large' />
@@ -29,17 +41,37 @@ const Profile = () => {
             </p>
           )}
         </Segment>
+
         {/* Saved Jobs Section */}
         <Segment>
           <Header as='h4'>
             <Icon name='bookmark' />
             Saved Jobs
           </Header>
-          {/* Add saved jobs display logic here when that functionality is ready */}
-          <p style={{ textAlign: 'center' }}>
-            No saved jobs yet. Start exploring and save jobs you're interested in!
-          </p>
+          
+          {loading ? (
+            <div className="loading-message">
+              <Icon name='spinner' loading />
+              Loading saved jobs...
+            </div>
+          ) : savedJobs.length > 0 ? (
+            <Grid stackable>
+              {savedJobs.map((job) => (
+                <Grid.Column key={job._id} width={16}>
+                  <JobCard
+                    job={job}
+                    saved={true}
+                  />
+                </Grid.Column>
+              ))}
+            </Grid>
+          ) : (
+            <p style={{ textAlign: 'center', fontFamily: "'Oooh Baby', cursive" }}>
+              Save Jobs to See them Here
+            </p>
+          )}
         </Segment>
+
         {/* Account Created Date - if available in your token */}
         {userProfile.createdAt && (
           <Segment>
@@ -54,4 +86,5 @@ const Profile = () => {
     </div>
   );
 };
+
 export default Profile;

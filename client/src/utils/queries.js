@@ -25,3 +25,21 @@ export const QUERY_JOBS = gql`
     }
   }
 `;
+
+export const GET_SAVED_JOBS = gql`
+  query getSavedJobs {
+    me {
+      _id
+      savedJobs {
+        _id
+        title
+        company
+        location
+        description
+        jobType
+        salary
+        postedDate
+      }
+    }
+  }
+`;

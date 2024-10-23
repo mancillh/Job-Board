@@ -34,6 +34,7 @@ const typeDefs = gql`
     me: User
     jobs: [Job!]!
     searchJobs(term: String!): [Job!]!
+    job(id: ID!): Job
   }
 
 
@@ -50,6 +51,9 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): AuthPayload!
+
+    saveJob(jobId: ID!): User
+    removeJob(jobId: ID!): User
 
     addJob(
       title: String!
