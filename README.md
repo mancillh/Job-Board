@@ -1,7 +1,7 @@
 # Job Board
 
 
-A job board web application where users can browse and apply for remote jobs. The platform allows users to log in, view job listings, and interact with job posts displayed on a virtual corkboard.
+A job board web application where users can browse and apply for remote jobs. The platform allows users to log in, view job listings, and interact with job posts displayed on a virtual corkboard..
 
 
 ## Table of Contents
