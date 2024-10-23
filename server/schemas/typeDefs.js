@@ -15,11 +15,11 @@ const typeDefs = gql`
     title: String!
     company: String!
     location: String!
-    description: String
-    jobType: String
-    salary: String
+    description: String!
+    requirements: [String]
+    jobType: String!
+    salary: String!
     postedDate: Date
-    postedBy: User
   }
 
   type Auth {

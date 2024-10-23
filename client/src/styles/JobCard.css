@@ -1,94 +1,95 @@
 .job-card {
+  position: relative;
   width: 220px;
   height: 220px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  padding: 30px 20px 20px;
-  margin: 15px;
-  cursor: pointer;
+  margin: 25px 15px;
   transition: all 0.3s ease;
-  position: relative;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.job-card::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 36px;
-  height: 36px;
-  background-image: url('/red-pushpin-png-7.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 2;
+  cursor: pointer;
 }
 
 .job-card.expanded {
-  width: 300px;
   height: auto;
-  min-height: 400px;
-  background-size: cover;
+  min-height: 350px;
 }
 
-.job-card-content {
-  height: 100%;
-  overflow-y: auto;
-  position: relative;
-  z-index: 1;
-  background-color: #009933;
-  padding: 10px;
-  border-radius: 5px;
+.job-card .card-content {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  background-color: #fff9c4 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.2) !important;
 }
 
-.job-card h3 {
-  margin-top: 0;
-  font-size: 1.2em;
-  color: #ffffff; /* Changed to white for better contrast */
+.pushpin {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  z-index: 2;
 }
 
-.job-card p {
-  margin: 5px 0;
-  font-size: 0.9em;
-  color: #e6e6e6; /* Light gray for better visibility */
-}
-
-.job-details {
-  margin-top: 15px;
-}
-
-.job-details h4 {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  color: #ffffff; /* Changed to white for better contrast */
-}
-
-.job-details ul {
-  padding-left: 20px;
-  margin: 5px 0;
-  color: #e6e6e6; /* Light gray for better visibility */
-}
-
-.job-details .ui.button {
-  margin-top: 15px;
-}
-
-/* Customize scrollbar for webkit browsers */
-.job-card-content::-webkit-scrollbar {
-  width: 5px;
-}
-
-.job-card-content::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,0.2);
-  border-radius: 5px;
-}
-
-/* Additional hover effect */
 .job-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: scale(1.02);
+}
+
+.job-card .header {
+  font-family: 'Oooh Baby', cursive !important;
+  font-size: 1.4em !important;
+  color: #333 !important;
+  margin-bottom: 0.5em !important;
+}
+
+.job-card .meta {
+  font-size: 1em !important;
+  color: #666 !important;
+}
+
+.job-card .description {
+  font-size: 0.9em !important;
+  color: #444 !important;
+}
+
+.job-card .description p {
+  margin: 0.5em 0;
+}
+
+.description-text {
+  margin-top: 1em !important;
+  white-space: pre-wrap;
+}
+
+.requirements {
+  margin-top: 1em;
+}
+
+.requirements h4 {
+  font-family: 'Oooh Baby', cursive !important;
+  margin-bottom: 0.5em;
+}
+
+.save-button {
+  margin-top: 1em !important;
+  font-family: 'Oooh Baby', cursive !important;
+  font-size: 1.1em !important;
+}
+
+.signup-message {
+  margin-top: 1em !important;
+  text-align: center !important;
+  font-family: 'Oooh Baby', cursive !important;
+  font-size: 1.1em !important;
+}
+
+/* Additional styling for saved jobs in profile */
+.profile-container .job-card {
+  width: 100%;
+  margin: 15px 0;
+}
+
+.profile-container .card-content {
+  background-color: #e3f2fd !important;
 }

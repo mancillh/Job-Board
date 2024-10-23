@@ -11,7 +11,7 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_JOBS = gql`
-  query allJobs {
+  query {
     jobs {
       _id
       title
@@ -19,13 +19,9 @@ export const QUERY_JOBS = gql`
       location
       description
       requirements
-      salary
       jobType
+      salary
       postedDate
-      postedBy {
-        _id
-        username
-      }
     }
   }
 `;
@@ -43,10 +39,6 @@ export const GET_SAVED_JOBS = gql`
         jobType
         salary
         postedDate
-        postedBy {
-          _id
-          username
-        }
       }
     }
   }
