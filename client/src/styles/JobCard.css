@@ -1,95 +1,103 @@
 .job-card {
-  position: relative;
-  width: 220px;
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
   height: 220px;
-  margin: 25px 15px;
-  transition: all 0.3s ease;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  padding: 30px 20px 20px;
+  margin: 15px !important;
   cursor: pointer;
-}
-
-.job-card.expanded {
-  height: auto;
-  min-height: 350px;
-}
-
-.job-card .card-content {
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0 !important;
-  background-color: #fff9c4 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: 3px 3px 5px rgba(0,0,0,0.2) !important;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .pushpin {
   position: absolute;
-  top: -20px;
+  top: -2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   z-index: 2;
 }
 
-.job-card:hover {
-  transform: scale(1.02);
+.job-card.expanded {
+  width: 300px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+  height: auto;
+  min-height: 400px;
+  background-size: cover;
 }
 
-.job-card .header {
-  font-family: 'Oooh Baby', cursive !important;
-  font-size: 1.4em !important;
-  color: #333 !important;
-  margin-bottom: 0.5em !important;
+.card-content {
+  height: 100% !important;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  background-color: #009933 !important;
+  padding: 10px !important;
+  border-radius: 5px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  box-shadow: none !important;
 }
 
-.job-card .meta {
-  font-size: 1em !important;
-  color: #666 !important;
+.card-content .header {
+  color: #ffffff !important;
+  font-size: 1.2em !important;
 }
 
-.job-card .description {
+.card-content .meta,
+.card-content .description p {
+  color: #e6e6e6 !important;
   font-size: 0.9em !important;
-  color: #444 !important;
-}
-
-.job-card .description p {
-  margin: 0.5em 0;
 }
 
 .description-text {
-  margin-top: 1em !important;
-  white-space: pre-wrap;
-}
-
-.requirements {
-  margin-top: 1em;
-}
-
-.requirements h4 {
-  font-family: 'Oooh Baby', cursive !important;
-  margin-bottom: 0.5em;
-}
-
-.save-button {
-  margin-top: 1em !important;
-  font-family: 'Oooh Baby', cursive !important;
-  font-size: 1.1em !important;
-}
-
-.signup-message {
-  margin-top: 1em !important;
-  text-align: center !important;
-  font-family: 'Oooh Baby', cursive !important;
-  font-size: 1.1em !important;
-}
-
-/* Additional styling for saved jobs in profile */
-.profile-container .job-card {
-  width: 100%;
   margin: 15px 0;
 }
 
-.profile-container .card-content {
-  background-color: #e3f2fd !important;
+.requirements h4 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.requirements p {
+  color: #e6e6e6;
+}
+
+.save-button {
+  margin-top: 15px !important;
+}
+
+/* Customize scrollbar for webkit browsers */
+.card-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.card-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+/* Additional hover effect */
+.job-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.signup-message {
+  margin-top: 15px !important;
+}
+
+/* Profile page specific adjustments */
+.saved-jobs-grid .job-card {
+  margin: 15px !important;
+  flex: 0 0 auto;
 }

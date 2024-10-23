@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Header, Segment, Icon, Grid } from 'semantic-ui-react';
+import { Container, Header, Segment, Icon } from 'semantic-ui-react';
 import { Navigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_SAVED_JOBS } from '../utils/queries';
@@ -27,7 +27,7 @@ const Profile = () => {
         <Header as='h2' textAlign='center' className="profile-header">
           Profile
         </Header>
-
+        
         {/* Username Display */}
         <Segment textAlign='center'>
           <Icon name='user circle' size='large' />
@@ -41,37 +41,7 @@ const Profile = () => {
             </p>
           )}
         </Segment>
-
-        {/* Saved Jobs Section */}
-        <Segment>
-          <Header as='h4'>
-            <Icon name='bookmark' />
-            Saved Jobs
-          </Header>
-          
-          {loading ? (
-            <div className="loading-message">
-              <Icon name='spinner' loading />
-              Loading saved jobs...
-            </div>
-          ) : savedJobs.length > 0 ? (
-            <Grid stackable>
-              {savedJobs.map((job) => (
-                <Grid.Column key={job._id} width={16}>
-                  <JobCard
-                    job={job}
-                    saved={true}
-                  />
-                </Grid.Column>
-              ))}
-            </Grid>
-          ) : (
-            <p style={{ textAlign: 'center', fontFamily: "'Oooh Baby', cursive" }}>
-              Save Jobs to See them Here
-            </p>
-          )}
-        </Segment>
-
+        
         {/* Account Created Date - if available in your token */}
         {userProfile.createdAt && (
           <Segment>
@@ -83,6 +53,35 @@ const Profile = () => {
           </Segment>
         )}
       </Container>
+
+      {/* Saved Jobs Section - Now outside the profile container */}
+      <div className="saved-jobs-section">
+        <Header as='h4' className="saved-jobs-header">
+          <Icon name='bookmark' />
+          Saved Jobs
+        </Header>
+        
+        {loading ? (
+          <div className="loading-message">
+            <Icon name='spinner' loading />
+            Loading saved jobs...
+          </div>
+        ) : savedJobs.length > 0 ? (
+          <div className="saved-jobs-grid">
+            {savedJobs.map((job) => (
+              <JobCard
+                key={job._id}
+                job={job}
+                saved={true}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="no-jobs-message">
+            Save Jobs to See them Here
+          </p>
+        )}
+      </div>
     </div>
   );
 };
