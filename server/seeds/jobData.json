@@ -16,5 +16,50 @@
     "requirements": "I cannot think of a requirement",
     "salary": "10000000",
     "jobType": "In-Person"
+  },
+  {
+    "title": "Senior Software Engineer",
+    "company": "Tech Innovators",
+    "location": "Austin, TX",
+    "description": "Lead development of new software solutions",
+    "requirements": "5+ years of experience in software development",
+    "salary": "120000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "Project Manager",
+    "company": "BuildCo",
+    "location": "San Francisco, CA",
+    "description": "Oversee engineering projects from start to finish",
+    "requirements": "Experience with Agile methodologies",
+    "salary": "95000",
+    "jobType": "Hybrid"
+  },
+  {
+    "title": "Technical Lead",
+    "company": "NextGen Systems",
+    "location": "Seattle, WA",
+    "description": "Guide and mentor a team of engineers",
+    "requirements": "Strong communication skills and technical background",
+    "salary": "110000",
+    "jobType": "In-Person"
+  },
+  {
+    "title": "Engineering Manager",
+    "company": "InnovateTech",
+    "location": "New York, NY",
+    "description": "Manage engineering teams and projects",
+    "requirements": "Proven leadership experience in engineering",
+    "salary": "130000",
+    "jobType": "In-Person"
+  },
+  {
+    "title": "DevOps Engineer",
+    "company": "Cloud Solutions Inc.",
+    "location": "Chicago, IL",
+    "description": "Automate and streamline operations and processes",
+    "requirements": "Experience with CI/CD tools and cloud platforms",
+    "salary": "115000",
+    "jobType": "Remote"
   }
 ]
