@@ -1,12 +1,8 @@
-import 'semantic-ui-css/semantic.min.css'
-// import { Outlet } from 'react-router-dom'; commented out to render child routes
+import 'semantic-ui-css/semantic.min.css';
+import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import JobCard from './components/JobCard';
-import { useState, useEffect } from 'react';
-// import { query } from 'express';
-
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [jobs, setJobs] = useState([]);
@@ -69,5 +65,4 @@ useEffect(() => {
     </>
   );
 }
-
 export default App;

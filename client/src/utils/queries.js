@@ -18,6 +18,10 @@ export const QUERY_JOBS = gql`
       company
       location
       description
+      requirements
+      salary
+      jobType
+      postedDate
     }
   }
 `;

@@ -4,6 +4,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 
 
+  scalar Date
 
   type User {
     _id: ID!             # Unique identifier for the user
@@ -17,7 +18,11 @@ const typeDefs = gql`
     title: String!      # Title of the job position
     company: String!    # Company offering the job
     location: String!     # Location of the job
-    description: String ! # Detailed description of the job
+    description: String! # Detailed description of the job
+    requirements: [String!] 
+    salary: String!
+    jobType: String
+    postedDate: Date
   }
 
   type AuthPayload {
