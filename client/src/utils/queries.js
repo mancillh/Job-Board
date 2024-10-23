@@ -43,3 +43,19 @@ export const GET_SAVED_JOBS = gql`
     }
   }
 `;
+
+export const SEARCH_JOBS = gql`
+  query searchJobs($term: String!) {
+    searchJobs(term: $term) {
+      _id
+      title
+      company
+      location
+      description
+      requirements
+      salary
+      jobType
+      postedDate
+    }
+  }
+`;

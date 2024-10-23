@@ -44,6 +44,8 @@ const resolvers = {
           { title: regex },
           { company: regex },
           { location: regex },
+          { description: regex },
+          { requirements: regex },
         ],
       });
     },
