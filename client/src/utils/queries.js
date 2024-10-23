@@ -22,6 +22,10 @@ export const QUERY_JOBS = gql`
       salary
       jobType
       postedDate
+      postedBy {
+        _id
+        username
+      }
     }
   }
 `;
@@ -39,6 +43,10 @@ export const GET_SAVED_JOBS = gql`
         jobType
         salary
         postedDate
+        postedBy {
+          _id
+          username
+        }
       }
     }
   }
