@@ -1,8 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import JobCard from './components/JobCard';
+
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [jobs, setJobs] = useState([]);
@@ -29,20 +32,26 @@ useEffect(() => {
               }
             `,
             variables: {
-              term: searchQuery,
+              term: searchQuery || "",
             },
           }),
         });
 
+        if (!response.ok) {
+          console.error('Failed to fetch jobs:', response.statusText);
+          return;
+        }
         const result = await response.json();
-        console.log(result)
         
+        if (result.data && result.data.searchJobs) {
         setJobs(result.data.searchJobs);
-      } catch (error) {
-        console.error('Error fetching jobs:', error);
+      } else {
+        console.error('Unexpected response structure:', result);
       }
-    };
-
+    } catch (error) {
+      console.error('Error fetching jobs:', error);
+    }
+  };
     fetchJobs();
   }, [searchQuery]);
 
