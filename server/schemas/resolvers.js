@@ -1,10 +1,23 @@
 const { AuthenticationError, UserInputError } = require('apollo-server-express');
 const { User, Job } = require('../models');
 const { signToken } = require('../utils/auth');
-const { GraphQLScalarType } = require('graphql');
+const { GraphQLScalarType, Kind } = require('graphql');
 
 const dateScalar = new GraphQLScalarType({
-  // ... existing dateScalar configuration
+  name: 'Date',
+  description: 'Date custom scalar type',
+  serialize(value) {
+    return value.getTime();
+  },
+  parseValue(value) {
+    return new Date(value);
+  },
+  parseLiteral(ast) {
+    if (ast.kind === Kind.INT) {
+      return new Date(parseInt(ast.value, 10));
+    }
+    return null;
+  },
 });
 
 const resolvers = {
@@ -12,7 +25,6 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        // Updated to populate savedJobs
         return User.findOne({ _id: context.user._id })
           .select('-password')
           .populate('savedJobs');
@@ -21,6 +33,9 @@ const resolvers = {
     },
     jobs: async () => {
       return Job.find().sort({ createdAt: -1 });
+    },
+    job: async (parent, { jobId }) => {
+      return Job.findById(jobId);
     },
     searchJobs: async (parent, { term }) => {
       const regex = new RegExp(term, 'i');
@@ -32,14 +47,9 @@ const resolvers = {
         ],
       });
     },
-    // Add a query to get a single job
-    job: async (parent, { jobId }) => {
-      return Job.findById(jobId);
-    },
   },
   Mutation: {
     signup: async (parent, { username, email, password }) => {
-      console.log('Signup mutation called with:', username, email);
       const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
@@ -58,12 +68,17 @@ const resolvers = {
     },
     addJob: async (parent, { title, company, location, description }, context) => {
       if (context.user) {
-        const job = await Job.create({ title, company, location, description });
+        const job = await Job.create({
+          title,
+          company,
+          location,
+          description,
+          postedBy: context.user._id
+        });
         return job;
       }
       throw new AuthenticationError('You need to be logged in to add a job!');
     },
-    // Add saveJob mutation
     saveJob: async (parent, { jobId }, context) => {
       if (context.user) {
         try {
@@ -77,7 +92,6 @@ const resolvers = {
               runValidators: true
             }
           ).populate('savedJobs');
-
           return updatedUser;
         } catch (err) {
           throw new UserInputError('Error saving job');
@@ -85,7 +99,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in to save jobs!');
     },
-    // Add removeJob mutation to remove a job from saved jobs
     removeJob: async (parent, { jobId }, context) => {
       if (context.user) {
         try {
@@ -96,24 +109,12 @@ const resolvers = {
             },
             { new: true }
           ).populate('savedJobs');
-
           return updatedUser;
         } catch (err) {
           throw new UserInputError('Error removing saved job');
         }
       }
       throw new AuthenticationError('You need to be logged in to remove saved jobs!');
-    }
-  },
-  // Add User type resolver to handle savedJobs field
-  User: {
-    savedJobs: async (parent) => {
-      try {
-        const user = await User.findById(parent._id).populate('savedJobs');
-        return user.savedJobs;
-      } catch (err) {
-        throw new Error('Error fetching saved jobs');
-      }
     }
   }
 };
