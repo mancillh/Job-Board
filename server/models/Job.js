@@ -23,7 +23,7 @@ const jobSchema = new mongoose.Schema({
   requirements: {
     type: [String],
     default: [],
-    required: true
+    required: false
   },
   salary: {
     type: String,
