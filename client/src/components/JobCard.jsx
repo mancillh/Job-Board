@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import { Card, Button, Icon, Message } from 'semantic-ui-react';
-import { useMutation } from '@apollo/client';
-import { SAVE_JOB } from '../utils/mutations';
+import { useMutation, useQuery } from '@apollo/client';
+import { SAVE_JOB, REMOVE_JOB } from '../utils/mutations';
+import { GET_SAVED_JOBS } from '../utils/queries';
 import Auth from '../utils/auth';
 import PropTypes from 'prop-types';
 import '../styles/JobCard.css';
 
 const JobCard = ({ job, saved = false }) => {
   const [expanded, setExpanded] = useState(false);
-  const [saveJob] = useMutation(SAVE_JOB);
+  const [saveJob] = useMutation(SAVE_JOB, {
+    refetchQueries: [{ query: GET_SAVED_JOBS }]
+  });
+  const [removeJob] = useMutation(REMOVE_JOB, {
+    refetchQueries: [{ query: GET_SAVED_JOBS }]
+  });
+
+  // Check if job is saved
+  const { data } = useQuery(GET_SAVED_JOBS);
+  const savedJobs = data?.me?.savedJobs || [];
+  const isJobSaved = savedJobs.some(savedJob => savedJob._id === job._id);
 
   const handleClick = () => {
     setExpanded(!expanded);
@@ -25,11 +36,22 @@ const JobCard = ({ job, saved = false }) => {
     }
   };
 
+  const handleRemoveJob = async (e) => {
+    e.stopPropagation();
+    try {
+      await removeJob({
+        variables: { jobId: job._id },
+      });
+    } catch (err) {
+      console.error('Error removing job:', err);
+    }
+  };
+
   return (
     <div className={`job-card ${expanded ? 'expanded' : ''}`} onClick={handleClick}>
       <img 
-        src="/red-pushpin-png-7.png" 
-        alt="pushpin" 
+        src="/red-pushpin-png-7.png"
+        alt="pushpin"
         className="pushpin"
       />
       <Card className="card-content">
@@ -52,7 +74,29 @@ const JobCard = ({ job, saved = false }) => {
                   </div>
                 )}
                 {Auth.loggedIn() ? (
-                  !saved && (
+                  isJobSaved ? (
+                    saved ? (
+                      <Button
+                        color='red'
+                        fluid
+                        onClick={handleRemoveJob}
+                        className="save-button"
+                      >
+                        <Icon name='bookmark' />
+                        Unsave Job
+                      </Button>
+                    ) : (
+                      <Button
+                        color='grey'
+                        fluid
+                        disabled
+                        className="save-button"
+                      >
+                        <Icon name='bookmark' />
+                        Saved
+                      </Button>
+                    )
+                  ) : (
                     <Button
                       color='teal'
                       fluid

@@ -42,3 +42,14 @@ export const SAVE_JOB = gql`
     }
   }
 `;
+
+export const REMOVE_JOB = gql`
+  mutation removeJob($jobId: ID!) {
+    removeJob(jobId: $jobId) {
+      _id
+      savedJobs {
+        _id
+      }
+    }
+  }
+`;
