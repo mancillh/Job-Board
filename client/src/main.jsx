@@ -1,8 +1,7 @@
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
 import App from './App.jsx';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -10,12 +9,11 @@ import Error from './pages/Error';
 import About from './pages/About';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
-
+import Profile from './pages/Profile';
 // Set up Apollo Client
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql', // Explicitly specify the full URL
+  uri: 'http://localhost:3001/graphql',
 });
-
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
@@ -25,12 +23,10 @@ const authLink = setContext((_, { headers }) => {
     }
   };
 });
-
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -40,7 +36,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
-
       },
       {
         path: '/login',
@@ -61,13 +56,16 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
       }
     ]
   }
-])
-
+]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ApolloProvider client={client}>
     <RouterProvider router={router} />
   </ApolloProvider>
-)
+);

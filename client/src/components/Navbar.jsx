@@ -2,23 +2,17 @@ import React, { Component } from 'react';
 import { MenuItem, Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Auth from '../utils/auth';
-
 const colors = ['black'];
-
 class ExampleMenu extends Component {
   state = { activeItem: 'home' };
-
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
   handleLogout = () => {
     Auth.logout();
     this.setState({ activeItem: 'home' });
   };
-
   render() {
     const { color } = this.props;
     const { activeItem } = this.state;
-
     return (
       <Menu color={color} inverted widths={5}>
         <MenuItem
@@ -40,11 +34,19 @@ class ExampleMenu extends Component {
           onClick={this.handleItemClick}
         />
         {Auth.loggedIn() ? (
-          <MenuItem
-            name='Logout'
-            active={activeItem === 'Logout'}
-            onClick={this.handleLogout}
-          />
+          <>
+            <MenuItem
+              href='./profile'
+              name='Profile'
+              active={activeItem === 'Profile'}
+              onClick={this.handleItemClick}
+            />
+            <MenuItem
+              name='Logout'
+              active={activeItem === 'Logout'}
+              onClick={this.handleLogout}
+            />
+          </>
         ) : (
           <>
             <MenuItem
@@ -65,15 +67,11 @@ class ExampleMenu extends Component {
     );
   }
 }
-
 ExampleMenu.propTypes = {
   color: PropTypes.string.isRequired,
 };
-
-const MenuExampleColoredInvertedMenus = () => {
+const Navbar = () => {
   const menus = colors.map((color) => <ExampleMenu color={color} key={color} />);
-
   return <div>{menus}</div>;
 };
-
-export default MenuExampleColoredInvertedMenus;
+export default Navbar;
