@@ -30,6 +30,7 @@ export const SAVE_JOB = gql`
     saveJob(jobId: $jobId) {
       _id
       username
+      email
       savedJobs {
         _id
         title
@@ -38,6 +39,7 @@ export const SAVE_JOB = gql`
         description
         jobType
         salary
+        postedDate
       }
     }
   }

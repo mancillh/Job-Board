@@ -13,7 +13,7 @@
     "company": "I-Mechanica",
     "location": "Melbourne, FL",
     "description": "Manager for other engineers",
-    "requirements": "I cannot think of a requirement",
+    "requirements": "3+ years of management experience",
     "salary": "10000000",
     "jobType": "In-Person"
   },
@@ -60,6 +60,213 @@
     "description": "Automate and streamline operations and processes",
     "requirements": "Experience with CI/CD tools and cloud platforms",
     "salary": "115000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "Data Scientist",
+    "company": "Analytics Pro",
+    "location": "Boston, MA",
+    "description": "Analyze complex data sets and develop predictive models",
+    "requirements": "Advanced degree in Statistics or related field",
+    "salary": "125000",
+    "jobType": "Hybrid"
+  },
+  {
+    "title": "UX Designer",
+    "company": "Design Masters",
+    "location": "Portland, OR",
+    "description": "Create intuitive user experiences for web applications",
+    "requirements": "Portfolio demonstrating UI/UX projects",
+    "salary": "90000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "Cybersecurity Analyst",
+    "company": "SecureNet",
+    "location": "Washington, DC",
+    "description": "Monitor and protect organization's digital assets",
+    "requirements": "Security certifications (CISSP preferred)",
+    "salary": "105000",
+    "jobType": "In-Person"
+  },
+  {
+    "title": "Mobile App Developer",
+    "company": "AppWorks",
+    "location": "Miami, FL",
+    "description": "Develop iOS and Android applications",
+    "requirements": "Experience with Swift and Kotlin",
+    "salary": "95000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "Cloud Architect",
+    "company": "CloudTech Solutions",
+    "location": "Denver, CO",
+    "description": "Design and implement cloud infrastructure",
+    "requirements": "AWS/Azure certification required",
+    "salary": "140000",
+    "jobType": "Hybrid"
+  },
+  {
+    "title": "AI Research Engineer",
+    "company": "Future AI",
+    "location": "Cambridge, MA",
+    "description": "Develop machine learning models and algorithms",
+    "requirements": "PhD in Computer Science or related field",
+    "salary": "150000",
+    "jobType": "In-Person"
+  },
+  {
+    "title": "Technical Writer",
+    "company": "DocuPro",
+    "location": "Remote",
+    "description": "Create technical documentation and user guides",
+    "requirements": "Strong writing skills and technical background",
+    "salary": "75000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "Hardware Engineer",
+    "company": "ChipTech",
+    "location": "San Jose, CA",
+    "description": "Design and develop computer hardware systems",
+    "requirements": "Experience with circuit design",
+    "salary": "115000",
+    "jobType": "In-Person"
+  },
+  {
+    "title": "Database Administrator",
+    "company": "DataCore",
+    "location": "Phoenix, AZ",
+    "description": "Manage and optimize database systems",
+    "requirements": "Oracle/SQL Server certification",
+    "salary": "100000",
+    "jobType": "Hybrid"
+  },
+  {
+    "title": "Quality Assurance Lead",
+    "company": "QualityFirst",
+    "location": "Minneapolis, MN",
+    "description": "Lead software testing initiatives",
+    "requirements": "ISTQB certification preferred",
+    "salary": "95000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "Network Engineer",
+    "company": "NetConnect",
+    "location": "Dallas, TX",
+    "description": "Design and maintain network infrastructure",
+    "requirements": "CCNA certification required",
+    "salary": "90000",
+    "jobType": "In-Person"
+  },
+  {
+    "title": "Blockchain Developer",
+    "company": "Chain Innovation",
+    "location": "Miami, FL",
+    "description": "Develop blockchain solutions and smart contracts",
+    "requirements": "Experience with Ethereum and Solidity",
+    "salary": "130000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "Systems Analyst",
+    "company": "SysLogic",
+    "location": "Charlotte, NC",
+    "description": "Analyze and optimize business systems",
+    "requirements": "Business analysis certification preferred",
+    "salary": "85000",
+    "jobType": "Hybrid"
+  },
+  {
+    "title": "Frontend Developer",
+    "company": "WebPro",
+    "location": "Atlanta, GA",
+    "description": "Create responsive web applications",
+    "requirements": "Experience with React and modern CSS",
+    "salary": "95000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "Backend Developer",
+    "company": "ServerLogic",
+    "location": "Houston, TX",
+    "description": "Develop server-side applications",
+    "requirements": "Experience with Node.js and databases",
+    "salary": "100000",
+    "jobType": "Hybrid"
+  },
+  {
+    "title": "Machine Learning Engineer",
+    "company": "AI Solutions",
+    "location": "Seattle, WA",
+    "description": "Implement machine learning models",
+    "requirements": "Experience with TensorFlow/PyTorch",
+    "salary": "135000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "IT Project Manager",
+    "company": "TechProjects",
+    "location": "Chicago, IL",
+    "description": "Manage technology implementation projects",
+    "requirements": "PMP certification required",
+    "salary": "110000",
+    "jobType": "In-Person"
+  },
+  {
+    "title": "Full Stack Developer",
+    "company": "StackMasters",
+    "location": "Austin, TX",
+    "description": "Develop full stack web applications",
+    "requirements": "Experience with MERN stack",
+    "salary": "115000",
+    "jobType": "Hybrid"
+  },
+  {
+    "title": "Product Manager",
+    "company": "ProductPro",
+    "location": "San Francisco, CA",
+    "description": "Lead product development initiatives",
+    "requirements": "3+ years product management experience",
+    "salary": "125000",
+    "jobType": "In-Person"
+  },
+  {
+    "title": "Game Developer",
+    "company": "GameCraft",
+    "location": "Los Angeles, CA",
+    "description": "Develop video games using Unity",
+    "requirements": "Experience with C# and Unity",
+    "salary": "95000",
+    "jobType": "Remote"
+  },
+  {
+    "title": "IT Support Specialist",
+    "company": "TechHelp",
+    "location": "Denver, CO",
+    "description": "Provide technical support to employees",
+    "requirements": "CompTIA A+ certification",
+    "salary": "65000",
+    "jobType": "In-Person"
+  },
+  {
+    "title": "Business Intelligence Analyst",
+    "company": "DataInsight",
+    "location": "Boston, MA",
+    "description": "Create data visualizations and reports",
+    "requirements": "Experience with Tableau/Power BI",
+    "salary": "90000",
+    "jobType": "Hybrid"
+  },
+  {
+    "title": "Software Test Engineer",
+    "company": "TestPro",
+    "location": "Raleigh, NC",
+    "description": "Develop and execute test automation",
+    "requirements": "Experience with Selenium",
+    "salary": "85000",
     "jobType": "Remote"
   }
 ]

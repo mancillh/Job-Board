@@ -29,16 +29,17 @@ const server = new ApolloServer({
 const startApolloServer = async () => {
   await server.start();
 
+  app.use(cors({
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    credentials: true
+  }));
+  
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-
-  // Apply expressMiddleware after server.start()
+  
+  // Then set up your Apollo middleware
   app.use(
     '/graphql',
-    cors({
-      origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
-      credentials: true,
-    }),
     expressMiddleware(server, {
       context: authMiddleware,
     })

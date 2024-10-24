@@ -8,16 +8,33 @@ import PropTypes from 'prop-types';
 import '../styles/JobCard.css';
 
 const JobCard = ({ job, saved = false }) => {
+  console.log('Job ID:', job._id);
   const [expanded, setExpanded] = useState(false);
+  
   const [saveJob] = useMutation(SAVE_JOB, {
-    refetchQueries: [{ query: GET_SAVED_JOBS }]
+    refetchQueries: [{ query: GET_SAVED_JOBS }],
+    onCompleted: (data) => {
+      console.log('Mutation completed with data:', data);
+    },
+    onError: (error) => {
+      console.error('Mutation error:', error.message);
+      console.error('Mutation error details:', error.graphQLErrors);
+      console.error('Network error:', error.networkError);
+    }
   });
+
   const [removeJob] = useMutation(REMOVE_JOB, {
-    refetchQueries: [{ query: GET_SAVED_JOBS }]
+    refetchQueries: [{ query: GET_SAVED_JOBS }],
+    onError: (error) => {
+      console.error('Remove job error:', error);
+    }
   });
 
   // Check if job is saved
-  const { data } = useQuery(GET_SAVED_JOBS);
+  const { data } = useQuery(GET_SAVED_JOBS, {
+    fetchPolicy: 'network-only'
+  });
+  
   const savedJobs = data?.me?.savedJobs || [];
   const isJobSaved = savedJobs.some(savedJob => savedJob._id === job._id);
 
@@ -26,27 +43,44 @@ const JobCard = ({ job, saved = false }) => {
   };
 
   const handleSaveJob = async (e) => {
+    console.log('Save button clicked');
+    e.preventDefault();
     e.stopPropagation();
+    if (!Auth.loggedIn()) {
+      console.log('User not logged in'); 
+      return;
+    }
+
+  const token = localStorage.getItem('id_token');
+  console.log('Auth token exists:', !!token);
+  console.log('User profile:', Auth.getProfile());
+  
     try {
-      await saveJob({
+      console.log('Attempting to save job with ID:', job._id); 
+      const response = await saveJob({
         variables: { jobId: job._id },
       });
+      console.log('Save mutation response:', response); 
     } catch (err) {
-      console.error('Error saving job:', err);
+      console.error('Error saving job:', err.message);
     }
   };
 
   const handleRemoveJob = async (e) => {
+    e.preventDefault();
     e.stopPropagation();
+    if (!Auth.loggedIn()) return;
+
     try {
       await removeJob({
-        variables: { jobId: job._id },
+        variables: { jobId: job._id }
       });
     } catch (err) {
       console.error('Error removing job:', err);
     }
   };
 
+  // Rest of your component remains the same...
   return (
     <div className={`job-card ${expanded ? 'expanded' : ''}`} onClick={handleClick}>
       <img 
