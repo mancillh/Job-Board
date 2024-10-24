@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 import { MenuItem, Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Auth from '../utils/auth';
+
 const colors = ['black'];
+
 class ExampleMenu extends Component {
   state = { activeItem: 'home' };
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
   handleLogout = () => {
     Auth.logout();
     this.setState({ activeItem: 'home' });
   };
+
   render() {
     const { color } = this.props;
     const { activeItem } = this.state;
+
     return (
       <Menu color={color} inverted widths={5}>
         <MenuItem
@@ -67,11 +73,14 @@ class ExampleMenu extends Component {
     );
   }
 }
+
 ExampleMenu.propTypes = {
   color: PropTypes.string.isRequired,
 };
+
 const Navbar = () => {
   const menus = colors.map((color) => <ExampleMenu color={color} key={color} />);
   return <div>{menus}</div>;
 };
+
 export default Navbar;
