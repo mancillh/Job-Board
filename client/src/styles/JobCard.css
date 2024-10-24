@@ -17,12 +17,13 @@
 
 .pushpin {
   position: absolute;
-  top: -2px;
+  top: 4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 36px;
-  height: 36px;
+  width: auto; /* Auto width */
+  height: 34px; /* Fixed height */
   z-index: 2;
+  object-fit: contain;
 }
 
 .job-card.expanded {
