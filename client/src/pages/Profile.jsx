@@ -9,7 +9,6 @@ import Auth from '../utils/auth';
 import '../styles/ProfilePages.css';
 
 const Profile = () => {
-  // Check if user is logged in
   if (!Auth.loggedIn()) {
     return <Navigate to="/login" />;
   }
@@ -31,15 +30,9 @@ const Profile = () => {
         {/* Username Display */}
         <Segment textAlign='center'>
           <Icon name='user circle' size='large' />
-          <Header as='h3'>
+          <Header as='h3' className="profile-username">
             {userProfile.username || userProfile.email || 'User'}
           </Header>
-          {userProfile.email && (
-            <p>
-              <Icon name='mail' />
-              {userProfile.email}
-            </p>
-          )}
         </Segment>
         
         {/* Account Created Date - if available in your token */}
