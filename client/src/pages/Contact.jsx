@@ -5,11 +5,12 @@ function Contact() {
     <div className='cork-container'>
       <div className='content-wrapper'>
         <h2>Contact Us</h2>
-        <p>Hannah Mancil: mancillh@gmail.com</p>
-        <p>Joshua Nanninga: example@gmail.com</p>
-        <p>Kent Ball: example@gmail.com</p>
-        <p>Thomas Leavitt: tleavitt25526@gmail.com</p>
-        <p>Tracey Litschgi: example@gmail.com</p>
+        <p>(GitHub)</p>
+        <p>Hannah Mancil: mancillh</p>
+        <p>Joshua Nanninga: joshuamarknanninga</p>
+        <p>Kent Ball: digitalscribe53</p>
+        <p>Thomas Leavitt: tleavitt25526</p>
+        <p>Tracey Litschgi: tlitschgi</p>
       </div>
     </div>
   );
