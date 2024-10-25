@@ -5,11 +5,15 @@ function Contact() {
     <div className='cork-container'>
       <div className='content-wrapper'>
         <h2>Contact Us</h2>
-        <p>Phone: 123.456.7890</p>
-        <p>Email: contact@neighborhoodjobs.com</p>
+        <p>(GitHub)</p>
+        <p>Hannah Mancil: mancillh</p>
+        <p>Joshua Nanninga: joshuamarknanninga</p>
+        <p>Kent Ball: digitalscribe53</p>
+        <p>Thomas Leavitt: tleavitt25526</p>
+        <p>Tracey Litschgi: tlitschgi</p>
       </div>
     </div>
   );
 }
 
-export default Contact;
+export default Contact; 
