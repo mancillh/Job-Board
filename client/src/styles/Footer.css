@@ -17,6 +17,8 @@
     align-items: center;
     justify-content: center;
     border-radius: 7px;
+    padding: 20px;
+    position: relative;
 }
 
 h5 {
@@ -38,4 +40,69 @@ h5 {
     background-position: center;
     background-repeat: no-repeat;
     z-index: 2;
-  }
+    top: -25px;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 1024px) {
+    h5 {
+        font-size: 32px;
+    }
+
+    .paper-behind-footer {
+        width: 85%;
+        height: auto;
+        min-height: 105px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h5 {
+        font-size: 28px;
+    }
+
+    .paper-behind-footer {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .paper-behind-footer::before {
+        width: 40px;
+        height: 40px;
+        top: -20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer {
+        height: auto;
+        min-height: 150px;
+        padding: 40px 10px;
+    }
+
+    h5 {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+
+    .paper-behind-footer {
+        width: 95%;
+        padding: 25px 10px;
+    }
+
+    .paper-behind-footer::before {
+        width: 30px;
+        height: 30px;
+        top: -15px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    h5 {
+        font-size: 18px;
+    }
+
+    .paper-behind-footer {
+        padding: 20px 8px;
+    }
+}
