@@ -1,53 +1,139 @@
 .header-container {
-    display: flex;
-    background-image: url('/corkboard banner.jpg');
-    background-size: cover;
-    background-position: 50% 50%;
-    position: relative;
-    object-fit: cover;
-    opacity: 0.9;
-    padding: 20px;
-    align-items: center;
-  }
-  
-  .header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .horizontal-line {
-    border-top: 10px solid black;
-    margin: 0;
-  }
-  
+  display: flex;
+  background-image: url('/corkboard banner.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+  object-fit: cover;
+  opacity: 0.9;
+  padding: 20px;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.horizontal-line {
+  border-top: 10px solid black;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Oooh Baby', cursive;
+  color: black;
+  font-size: 120px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sticky-icon {
+  margin-right: 3%;
+  align-self: flex-start;
+}
+
+.search-container {
+  width: 80%;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.job-search-bar input {
+  border: 3px solid #000 !important;
+  border-radius: 10px !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 1.2em !important;
+}
+
+.job-search-bar i.icon {
+  font-size: 1.5em !important;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 1024px) {
   h1 {
-    font-family: 'Oooh Baby', cursive;
-    color: black;
-    font-size: 120px;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 90px;
   }
-  
-  .sticky-icon {
-    margin-right: 3%;
-    align-self: flex-start;
-  }
-  
+
   .search-container {
-    width: 80%;
-    max-width: 800px;
-    margin-bottom: 20px;
+    width: 90%;
   }
-  
+
+  .sticky-icon {
+    width: 80px !important;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-container {
+    padding: 15px;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 70px;
+    margin-bottom: 15px;
+  }
+
+  .sticky-icon {
+    align-self: center;
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 60px !important;
+  }
+
+  .search-container {
+    width: 95%;
+  }
+
   .job-search-bar input {
-    border: 3px solid #000 !important;
-    border-radius: 10px !important;
-    background-color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 1em !important;
+  }
+
+  .job-search-bar i.icon {
     font-size: 1.2em !important;
   }
-  
-  .job-search-bar i.icon {
-    font-size: 1.5em !important;
+}
+
+@media screen and (max-width: 480px) {
+  .header-container {
+    padding: 10px;
   }
+
+  h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+
+  .sticky-icon {
+    width: 50px !important;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .job-search-bar input {
+    font-size: 0.9em !important;
+    padding: 8px !important;
+  }
+
+  .job-search-bar i.icon {
+    font-size: 1em !important;
+  }
+}
+
+/* For very small screens */
+@media screen and (max-width: 320px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  .sticky-icon {
+    width: 40px !important;
+  }
+}
