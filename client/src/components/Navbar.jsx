@@ -40,11 +40,19 @@ class ExampleMenu extends Component {
           onClick={this.handleItemClick}
         />
         {Auth.loggedIn() ? (
-          <MenuItem
-            name='Logout'
-            active={activeItem === 'Logout'}
-            onClick={this.handleLogout}
-          />
+          <>
+            <MenuItem
+              href='./profile'
+              name='Profile'
+              active={activeItem === 'Profile'}
+              onClick={this.handleItemClick}
+            />
+            <MenuItem
+              name='Logout'
+              active={activeItem === 'Logout'}
+              onClick={this.handleLogout}
+            />
+          </>
         ) : (
           <>
             <MenuItem
@@ -70,10 +78,9 @@ ExampleMenu.propTypes = {
   color: PropTypes.string.isRequired,
 };
 
-const MenuExampleColoredInvertedMenus = () => {
+const Navbar = () => {
   const menus = colors.map((color) => <ExampleMenu color={color} key={color} />);
-
   return <div>{menus}</div>;
 };
 
-export default MenuExampleColoredInvertedMenus;
+export default Navbar;

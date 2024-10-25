@@ -24,3 +24,34 @@ export const SIGNUP_USER = gql`
     }
   }
 `;
+
+export const SAVE_JOB = gql`
+  mutation saveJob($jobId: ID!) {
+    saveJob(jobId: $jobId) {
+      _id
+      username
+      email
+      savedJobs {
+        _id
+        title
+        company
+        location
+        description
+        jobType
+        salary
+        postedDate
+      }
+    }
+  }
+`;
+
+export const REMOVE_JOB = gql`
+  mutation removeJob($jobId: ID!) {
+    removeJob(jobId: $jobId) {
+      _id
+      savedJobs {
+        _id
+      }
+    }
+  }
+`;

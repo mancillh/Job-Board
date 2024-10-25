@@ -1,88 +1,88 @@
 .job-card {
-  width: 220px;
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
   height: 220px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
   padding: 30px 20px 20px;
-  margin: 15px;
+  margin: 15px !important;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.job-card::before {
-  content: '';
+.pushpin {
   position: absolute;
-  top: -2px;
+  top: 4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 36px;
-  height: 36px;
-  background-image: url('/red-pushpin-png-7.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: auto; /* Auto width */
+  height: 34px; /* Fixed height */
   z-index: 2;
+  object-fit: contain;
 }
 
 .job-card.expanded {
-  width: 300px;
+  width: 300px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
   height: auto;
   min-height: 400px;
   background-size: cover;
 }
 
-.job-card-content {
-  height: 100%;
+.card-content {
+  height: 100% !important;
   overflow-y: auto;
   position: relative;
   z-index: 1;
-  background-color: #009933;
-  padding: 10px;
-  border-radius: 5px;
+  background-color: #009933 !important;
+  padding: 10px !important;
+  border-radius: 5px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  box-shadow: none !important;
 }
 
-.job-card h3 {
-  margin-top: 0;
-  font-size: 1.2em;
-  color: #ffffff; /* Changed to white for better contrast */
+.card-content .header {
+  color: #ffffff !important;
+  font-size: 1.2em !important;
 }
 
-.job-card p {
-  margin: 5px 0;
-  font-size: 0.9em;
-  color: #e6e6e6; /* Light gray for better visibility */
+.card-content .meta,
+.card-content .description p {
+  color: #e6e6e6 !important;
+  font-size: 0.9em !important;
 }
 
-.job-details {
-  margin-top: 15px;
+.description-text {
+  margin: 15px 0;
 }
 
-.job-details h4 {
+.requirements h4 {
   margin-top: 10px;
   margin-bottom: 5px;
-  color: #ffffff; /* Changed to white for better contrast */
+  color: #ffffff;
 }
 
-.job-details ul {
-  padding-left: 20px;
-  margin: 5px 0;
-  color: #e6e6e6; /* Light gray for better visibility */
+.requirements p {
+  color: #e6e6e6;
 }
 
-.job-details .ui.button {
-  margin-top: 15px;
+.save-button {
+  margin-top: 15px !important;
 }
 
 /* Customize scrollbar for webkit browsers */
-.job-card-content::-webkit-scrollbar {
+.card-content::-webkit-scrollbar {
   width: 5px;
 }
 
-.job-card-content::-webkit-scrollbar-thumb {
+.card-content::-webkit-scrollbar-thumb {
   background-color: rgba(0,0,0,0.2);
   border-radius: 5px;
 }
@@ -91,4 +91,14 @@
 .job-card:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.signup-message {
+  margin-top: 15px !important;
+}
+
+/* Profile page specific adjustments */
+.saved-jobs-grid .job-card {
+  margin: 15px !important;
+  flex: 0 0 auto;
 }

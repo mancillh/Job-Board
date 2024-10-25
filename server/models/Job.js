@@ -23,7 +23,7 @@ const jobSchema = new mongoose.Schema({
   requirements: {
     type: [String],
     default: [],
-    required: true
+    required: false
   },
   salary: {
     type: String,
@@ -38,12 +38,7 @@ const jobSchema = new mongoose.Schema({
   postedDate: {
     type: Date,
     default: Date.now,
-  },
-  postedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: false, // should be true
-  },
+  }
 }, {
   timestamps: true,
 });

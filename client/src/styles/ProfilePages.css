@@ -1,0 +1,65 @@
+.profile-page {
+  background-image: url('/corkboard banner.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px !important;
+  width: 100%;
+  margin-bottom: 2rem !important;
+}
+
+.saved-jobs-section {
+  width: 100%;
+  padding: 1rem;
+}
+
+.saved-jobs-header {
+  color: white !important;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem !important;
+  font-size: 1.8rem !important;
+}
+
+.saved-jobs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.no-jobs-message {
+  text-align: center;
+  font-family: 'Oooh Baby', cursive;
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.loading-message {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Remove Grid specific styling */
+.ui.grid {
+  margin: 0 !important;
+}
+
+.ui.grid > .column {
+  padding: 0 !important;
+}
